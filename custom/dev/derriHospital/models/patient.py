@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class DerriHospitalPatient(models.Model):
@@ -15,12 +16,19 @@ class DerriHospitalPatient(models.Model):
     capitalized_name = fields.Char(
         string="Capitalized Name", compute="_compute_capitalized_name")
 
+    @api.constrains("is_child", "age")
+    def _check_child_age(self):
+        for rec in self:
+            if rec.is_child and rec.age == 0:
+                raise ValidationError(("Age can't be Zero"))
+
     @api.depends("name")
     def _compute_capitalized_name(self):
-        if self.name:
-            self.capitalized_name = self.name.upper()
-        else:
-            self.capitalized_name = ""
+        for rec in self:
+            if rec.name:
+                self.capitalized_name = self.name.upper()
+            else:
+                rec.capitalized_name = ""
 
     @api.onchange("age")
     def on_change_age(self):
