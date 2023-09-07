@@ -55,6 +55,12 @@
         <field name="name" />
         <field name="age" />
         <field name="gender" />
+        <filter name="filter_male" string="Male" domain="[('gender','=','male')]" />
+        <filter name="filter_female" string="Female" domain="[('gender','=','female')]" />
+        <filter name="filter_others" string="Others" domain="[('gender','=','others')]" />
+        <!-- adding a AND filter -->
+        <separator />
+        <filter name="filter_childs" string="Childs" domain="[('is_child','=',True)]" />
       </search>
     </field>
   </record>
