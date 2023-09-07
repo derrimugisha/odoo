@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"></field>
+                        </h1>
+                    </div> -->
+                    <group>
+                        <field name="name" />
+                        <!-- <field name="is_child" />
+                        <field name="age" /> -->
+                        <field name="ref" />
+                        <!-- <field name="doctor_id" /> -->
+                        <field name="gender" />
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <!-- <field name="activity_ids" /> -->
+                    <field name="message_ids" options="{'post_refresh':'recipients'}" />
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="ref" />
+                <field name="gender" />
+            </tree>
+
+        </field>
+    </record>
+
+    <!-- <record id="view_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hospital.doctor.search</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="ref" />
+                <field name="name" />
+                <field name="age" />
+                <field name="gender" />
+                <filter name="filter_male" string="Male" domain="[('gender','=','male')]" />
+                <filter name="filter_female" string="Female" domain="[('gender','=','female')]" />
+                <filter name="filter_others" string="Others" domain="[('gender','=','others')]" />
+
+                <separator />
+                <filter name="filter_childs" string="Childs" domain="[('is_child','=',True)]" />
+                <group expand="0" string="Group By...">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}" />
+                </group>
+            </search>
+        </field>
+    </record> -->
+
+
+    <!-- creating action -->
+    <!-- <record id="action_hopistal_doctor" model="ir.actions.act_window">
+        <field name="name">doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+    </record> -->
+    <record id="action_hopistal_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+    </record>
+    <!-- end of creating action -->
+
+    <!-- linking menu to action -->
+    <menuitem
+        id="menu_hospital_master_data"
+        name="Master Data"
+        parent="menu_hospital_root"
+        action="action_hopistal_doctor"
+        sequence="10" />
+    <!-- end of linking menu to action -->
+</odoo>
