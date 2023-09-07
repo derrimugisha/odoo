@@ -45,37 +45,6 @@
 
         </field>
     </record>
-
-    <!-- <record id="view_hospital_doctor_search" model="ir.ui.view">
-        <field name="name">hospital.doctor.search</field>
-        <field name="model">hospital.doctor</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="ref" />
-                <field name="name" />
-                <field name="age" />
-                <field name="gender" />
-                <filter name="filter_male" string="Male" domain="[('gender','=','male')]" />
-                <filter name="filter_female" string="Female" domain="[('gender','=','female')]" />
-                <filter name="filter_others" string="Others" domain="[('gender','=','others')]" />
-
-                <separator />
-                <filter name="filter_childs" string="Childs" domain="[('is_child','=',True)]" />
-                <group expand="0" string="Group By...">
-                    <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}" />
-                </group>
-            </search>
-        </field>
-    </record> -->
-
-
-    <!-- creating action -->
-    <!-- <record id="action_hopistal_doctor" model="ir.actions.act_window">
-        <field name="name">doctors</field>
-        <field name="res_model">hospital.doctor</field>
-        <field name="view_mode">tree,form</field>
-        <field name="type">ir.actions.act_window</field>
-    </record> -->
     <record id="action_hopistal_doctor" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="res_model">hospital.doctor</field>
