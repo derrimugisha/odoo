@@ -15,6 +15,14 @@ class DerriHospitalPatient(models.Model):
 
     capitalized_name = fields.Char(
         string="Capitalized Name", compute="_compute_capitalized_name")
+    ref = fields.Char(strinf="Reference", default=lambda self: ("New"))
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals["ref"] = self.env["ir.sequence"].next_by_code(
+                "hospital.patient")
+        return super(DerriHospitalPatient, self).create(vals_list)
 
     @api.constrains("is_child", "age")
     def _check_child_age(self):
