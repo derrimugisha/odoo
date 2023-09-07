@@ -61,6 +61,9 @@
         <!-- adding a AND filter -->
         <separator />
         <filter name="filter_childs" string="Childs" domain="[('is_child','=',True)]" />
+        <group expand="0" string="Group By...">
+          <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}" />
+        </group>
       </search>
     </field>
   </record>
