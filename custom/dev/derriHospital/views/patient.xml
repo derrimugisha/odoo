@@ -46,6 +46,19 @@
     </field>
   </record>
 
+  <record id="view_hospital_patient_search" model="ir.ui.view">
+    <field name="name">hospital.patient.search</field>
+    <field name="model">hospital.patient</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="ref" />
+        <field name="name" />
+        <field name="age" />
+        <field name="gender" />
+      </search>
+    </field>
+  </record>
+
 
   <record id="action_hopistal_patient" model="ir.actions.act_window">
     <field name="name">Patients</field>
