@@ -32,3 +32,5 @@ This file includes the configurations you need to configure so that you can star
 ```
 
 NOTE: ``In the above code make a change to args key to your root directory that leads to conf folder``
+
+- After that you can click on run and then run with out debugging.
