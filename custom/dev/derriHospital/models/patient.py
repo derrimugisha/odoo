@@ -16,7 +16,8 @@ class DerriHospitalPatient(models.Model):
     capitalized_name = fields.Char(
         string="Capitalized Name", compute="_compute_capitalized_name")
     ref = fields.Char(string="Reference", default=lambda self: ("New"))
-    doctor_id = fields.Many2one("hospital.doctor", string="Doctor")
+    doctor_id = fields.Many2one(
+        "hospital.doctor", string="Doctor", tracking=True)
 
     @api.model_create_multi
     def create(self, vals_list):
