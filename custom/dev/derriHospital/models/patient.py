@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
+import datetime
 
 
 class DerriHospitalPatient(models.Model):
@@ -7,7 +8,9 @@ class DerriHospitalPatient(models.Model):
     _description = "patient recors"
     _inherit = "mail.thread"
     name = fields.Char(string="Name", required=True, tracking=True)
-    age = fields.Integer(string="Age", tracking=True)
+    dob = fields.Date(string="Date Of Birth", required=True, tracking=True)
+    age = fields.Integer(string="Age", tracking=True,
+                         compute="_calculate_age", store=True)
     is_child = fields.Boolean(string="is child ?", tracking=True)
     notes = fields.Text(string="Notes", tracking=True)
     gender = fields.Selection(
@@ -25,6 +28,17 @@ class DerriHospitalPatient(models.Model):
             vals["ref"] = self.env["ir.sequence"].next_by_code(
                 "hospital.patient")
         return super(DerriHospitalPatient, self).create(vals_list)
+
+    @api.onchange("dob")
+    def _calculate_age(self):
+        for vals in self:
+            if vals.dob:
+                today_date = datetime.date.today()
+                bdate = fields.Datetime.to_datetime(vals.dob).date()
+                total_age = int((today_date - bdate).days / 365)
+                vals.age = total_age
+            else:
+                vals.age = 0
 
     @api.constrains("is_child", "age")
     def _check_child_age(self):
