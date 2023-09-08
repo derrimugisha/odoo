@@ -21,6 +21,9 @@
             <field name="doctor_id" />
             <field name="capitalized_name" />
           </group>
+          <group>
+            <field name="documents" />
+          </group>
         </sheet>
 
         <div class="oe_chatter">

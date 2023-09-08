@@ -21,6 +21,7 @@ class DerriHospitalPatient(models.Model):
     ref = fields.Char(string="Reference", default=lambda self: ("New"))
     doctor_id = fields.Many2one(
         "hospital.doctor", string="Doctor", tracking=True)
+    documents = fields.Binary(string="Documents")
 
     @api.model_create_multi
     def create(self, vals_list):
