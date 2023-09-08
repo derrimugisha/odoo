@@ -5,5 +5,6 @@
     "data": ["security/ir.model.access.csv",
               "data/sequence.xml",
               "views/menu.xml", 
-              "views/patient.xml",]
+              "views/patient.xml",
+              "views/doctor.xml"]
 }
