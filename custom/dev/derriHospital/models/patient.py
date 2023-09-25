@@ -23,6 +23,12 @@ class DerriHospitalPatient(models.Model):
         "hospital.doctor", string="Doctor", tracking=True)
     documents = fields.Binary(string="Documents")
 
+    def _print_report(self):
+        print("*"*8)
+        print("this is the game of print a report")
+        print("*"*8)
+        return self.env.ref("derriHospital.pateint_report_temp_action").report_action(self)
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
