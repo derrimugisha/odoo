@@ -45,6 +45,7 @@
 
         </field>
     </record>
+    <!-- creating an action -->
     <record id="action_hopistal_doctor" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="res_model">hospital.doctor</field>

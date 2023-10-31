@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="patient_report_template">
+        <t t-call="web.html_container">
+            <t foreach="docs" t-as="doc">
+                <t t-call="external_layout">
+                    <div class="page">
+                        <h1>Hello how are you</h1>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- adding a report action -->
+
+    <!-- Replace ID with the report name from Carbiz Print Method -->
+    <record id="pateint_report_temp_action" model="ir.actions.report">
+
+        <field name="name">render template cond 2</field>
+
+        <!-- MNodel -->
+        <field name="model">hospital.patient</field>
+
+        <field name="binding_model_id" ref="derriHospital.action_hopistal_patient" />
+
+        <field name="report_type">qweb-pdf</field>
+
+        <!-- subtitute  carbiz.-->
+        <field name="report_name">derriHospital.template_2</field>
+
+        <field name="report_file">derriHospital.template_2</field>
+
+        <field name="binding_type">report</field>
+
+        <!-- <field name="paperformat_id" ref="module_name.paperformat_name"/> -->
+    </record>
+</odoo>
